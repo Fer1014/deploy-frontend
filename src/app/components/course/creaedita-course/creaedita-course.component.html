@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="container" style="text-align: center">
+      <h2>Registro de Cursos</h2>
+      <form [formGroup]="form" (submit)="aceptar()" class="example-form">
+        <mat-form-field class="example-full-width">
+          <mat-label>Curso</mat-label>
+          <input matInput placeholder="Curso" formControlName="name" />
+          <mat-error *ngIf="obtenerControlCampo('name')?.errors?.['required']">
+            El nombre del curso es obligatorio.
+          </mat-error>
+        </mat-form-field>
+        <br />
+        <mat-form-field>
+          <mat-label>Créditos</mat-label>
+          <mat-select formControlName="credits">
+            <mat-option *ngFor="let c of creditos" [value]="c.value">
+              {{ c.viewValue }}
+            </mat-option>
+          </mat-select>
+          <mat-error
+            *ngIf="obtenerControlCampo('credits')?.errors?.['required']"
+          >
+            Los créditos son obligatorios.
+          </mat-error>
+        </mat-form-field>
+        <br />
+        <mat-form-field>
+          <mat-label>Tipos Cursos</mat-label>
+          <mat-select formControlName="type">
+            <mat-option *ngFor="let t of tiposCursos" [value]="t.value">
+              {{ t.viewValue }}
+            </mat-option>
+          </mat-select>
+          <mat-error *ngIf="obtenerControlCampo('type')?.errors?.['required']">
+            Los créditos son obligatorios.
+          </mat-error>
+        </mat-form-field>
+        <br />
+        <mat-form-field class="example-full-width">
+          <mat-label>Semestre</mat-label>
+          <input matInput placeholder="Semestre" formControlName="semester" />
+          <mat-error
+            *ngIf="obtenerControlCampo('semester')?.errors?.['required']"
+          >
+            El semestre es obligatorio.
+          </mat-error>
+        </mat-form-field>
+        <br />
+        <mat-form-field>
+          <mat-label>Universidad</mat-label>
+          <mat-select formControlName="university">
+            <mat-option
+              *ngFor="let u of listaUniversidades"
+              [value]="u.idUniversity"
+            >
+              {{ u.nameUniversity }}
+            </mat-option>
+          </mat-select>
+          <mat-error
+            *ngIf="obtenerControlCampo('university')?.errors?.['required']"
+          >
+            Los créditos son obligatorios.
+          </mat-error>
+        </mat-form-field>
+        <br />
+        <button mat-raised-button color="primary">Aceptar</button>
+        <button mat-raised-button color="warn" routerLink="/cursos">
+          Cancelar
+        </button>
+        <p>{{ mensaje }}</p>
+      </form>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,21 @@
+<mat-toolbar color="primary">
+  <mat-icon>menu</mat-icon>
+  <button mat-button [matMenuTriggerFor]="menuUniversidad">Universidad</button>
+  <button mat-button [matMenuTriggerFor]="menuCursos">Curso</button>
+</mat-toolbar>
+
+<mat-menu #menuUniversidad="matMenu">
+  <button mat-menu-item routerLink="/universidades/nuevo">Registrar</button>
+  <button mat-menu-item routerLink="/universidades">Listar</button>
+  <button mat-menu-item routerLink="/universidades/reporte">Buscar</button>
+
+  <!-- Agrega más elementos de menú si es necesario -->
+</mat-menu>
+
+<mat-menu #menuCursos="matMenu">
+  <button mat-menu-item routerLink="/cursos/nuevo">Registrar</button>
+  <button mat-menu-item routerLink="/cursos">Listar</button>
+  <!-- Agrega más elementos de menú si es necesario -->
+</mat-menu>
+
+<router-outlet></router-outlet>
